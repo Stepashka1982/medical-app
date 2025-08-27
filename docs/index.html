@@ -113,8 +113,6 @@
     <script>
         // Инициализация Telegram Web App
         let tg = window.Telegram.WebApp;
-        tg.expand();
-        tg.enableClosingConfirmation();
         
         // Функция отправки данных в бота
         function sendData() {
@@ -139,7 +137,7 @@
             // Закрываем Web App после отправки
             setTimeout(() => {
                 tg.close();
-            }, 1000);
+            }, 1500);
         }
         
         // Поиск при нажатии Enter
@@ -151,6 +149,8 @@
         
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', function() {
+            tg.expand();
+            tg.enableClosingConfirmation();
             console.log('Медицинское Web App загружено!');
         });
     </script>
