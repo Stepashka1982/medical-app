@@ -134,10 +134,13 @@
                 query: query
             }));
             
-            // Закрываем Web App после отправки
+            // Не закрываем Web App сразу, ждем обработки
             setTimeout(() => {
-                tg.close();
-            }, 1500);
+                resultDiv.innerHTML = '<div class="loading">✅ Запрос отправлен. Возвращаемся в бота...</div>';
+                setTimeout(() => {
+                    tg.close();
+                }, 1000);
+            }, 1000);
         }
         
         // Поиск при нажатии Enter
@@ -151,6 +154,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             tg.expand();
             tg.enableClosingConfirmation();
+            tg.BackButton.show();
+            tg.BackButton.onClick(() => {
+                tg.close();
+            });
             console.log('Медицинское Web App загружено!');
         });
     </script>
